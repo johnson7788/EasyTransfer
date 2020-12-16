@@ -4,7 +4,7 @@
     <br>
 <p>
 
-<p align="center"> <b> EasyTransfer is designed to make the development of transfer learning in NLP applications easier. </b> </p>
+<p align="center"> <b> EasyTransfer旨在简化NLP应用程序中迁移学习的开发 . </b> </p>
 <p align="center">
     <a href="https://www.yuque.com/easytransfer/itfpm9/ah0z6o">
         <img src="https://cdn.nlark.com/yuque/0/2020/svg/2480469/1600310258840-bfe6302e-d934-409d-917c-8eab455675c1.svg" height="24">
@@ -15,23 +15,35 @@
 </p>
 
 
-The literature has witnessed the success of applying deep Transfer Learning (TL) for many real-world NLP applications, yet it is not easy to build an easy-to-use TL toolkit to achieve such a goal. To bridge this gap, EasyTransfer is designed to facilitate users leveraging deep TL for NLP applications at ease. It was developed in Alibaba in early 2017, and has been used in the major BUs in Alibaba group and achieved very good results in 20+ business scenarios. It supports the mainstream pre-trained ModelZoo, including pre-trained language models (PLMs) and multi-modal models on the PAI platform, integrates the SOTA models for the mainstream NLP applications in AppZoo, and supports knowledge distillation for PLMs. EasyTransfer is very convenient for users to quickly start model training, evaluation, offline prediction, and online deployment. It also provides rich APIs to make the development of NLP and transfer learning easier.
-
+许多实际的NLP应用程序中应用深度迁移学习(TL)成功，
+但是要构建易于使用的TL工具包来实现这一目标并不容易。 
+为了弥合这一差距，EasyTransfer旨在帮助用户轻松地将深度TL用于NLP应用。
+ 它于2017年初在阿里巴巴开发，已在阿里巴巴集团的主要业务部门中使用，
+ 并在20多个业务场景中取得了非常好的成绩。 它支持主流的预训练ModelZoo，
+ 包括PAI平台上的预训练语言模型(PLM)和多模式模型，为AppZoo中的主流NLP应用程序集成了SOTA模型，
+ 并支持PLM的知识蒸馏。 EasyTransfer非常方便用户快速启动模型训练，评估，离线预测和在线部署。 
+ 它还提供了丰富的API，可以简化NLP的开发和迁移学习。 
 
 # Main Features
 
-- **Language model pre-training tool:** it supports a comprehensive pre-training tool for users to pre-train language models such as T5 and BERT. Based on the tool, the user can easily train a model to achieve great results in the benchmark leaderboards such as CLUE, GLUE, and SuperGLUE;
-- **ModelZoo with rich and high-quality pre-trained models:** supports the Continual Pre-training and Fine-tuning of mainstream LM models such as BERT, ALBERT, RoBERTa, T5, etc. It also supports a multi-modal model FashionBERT developed using the fashion domain data in Alibaba;
-- **AppZoo with rich and easy-to-use applications:** supports mainstream NLP applications and those models developed inside of Alibaba, e.g.: HCNN for text matching, and BERT-HAE for MRC.
-- **Automatic knowledge distillation:** supports task-adaptive knowledge distillation to distill knowledge from a teacher model to a small task-specific student model. The resulting method is AdaBERT, which uses a neural architecture search method to find a task-specific architecture to compress the original BERT model. The compressed models are 12.7x to 29.3x faster than BERT in inference time and 11.5x to 17.0x smaller in terms of parameter size and with comparable performance.
-- **Easy-to-use and high-performance distributed strategy:** based on the in-house PAI features, it provides easy-to-use and high-performance distributed strategy for multiple CPU/GPU training.
+- **语言模型预训练工具**它支持全面的预训练工具，供用户预训练T5和BERT等语言模型。
+基于该工具，用户可以轻松地在CLUE，GLUE和SuperGLUE等基准排行榜中训练模型以取得出色的成绩； 
+- **ModelZoo具有丰富且高质量的预训练模型**支持主流LM模型(例如BERT，ALBERT，RoBERTa，T5等)的继续预训练和微调。
+它还支持使用阿里巴巴中的时尚领域数据开发的多模式模型FashionBERT； 
+- **具有丰富且易于使用的应用程序的AppZoo**支持主流的NLP应用程序以及在阿里巴巴内部开发的那些模型，
+例如：HCNN用于文本匹配，而BERT-HAE用于MRC。
+- **自动知识蒸馏**支持任务自适应知识蒸馏，以将知识从teacher模型蒸馏为针对特定任务的小型student模型。
+生成的方法是AdaBERT，它使用神经体系结构搜索方法来查找特定于任务的体系结构以压缩原始BERT模型。
+压缩后的模型在推理时间上比BERT快12.7到29.3倍，在参数大小和性能方面则比BERT小11.5到17.0倍。
+- **易于使用和高性能的分布式策略**基于内部PAI特征，它为多个CPU / GPU训练提供了易于使用的高性能分布式策略。 
+
 
 # Architecture
 ![image.png](https://cdn.nlark.com/yuque/0/2020/png/2480469/1600310258839-04837b68-ef37-449d-8ff4-02dbd8dcef9e.png#align=left&display=inline&height=357&margin=%5Bobject%20Object%5D&name=image.png&originHeight=713&originWidth=1492&size=182794&status=done&style=none&width=746)
 
 # Installation
 
-You can either install from pip 
+您可以从pip安装 
 
 ```bash
 $ pip install easytransfer
@@ -44,11 +56,11 @@ $ git clone https://github.com/alibaba/EasyTransfer.git
 $ cd EasyTransfer
 $ python setup.py install
 ```
-This repo is tested on Python3.6/2.7, tensorflow 1.12.3
+此仓库已在python3.6/2.7，tensorflow 1.12.3上进行了测试 
 
 
 # Quick Start
-Now let's show how to use just 30 lines of code to build a text classification model based on BERT. 
+现在，让我们展示如何仅使用30行代码来构建基于BERT的文本分类模型。 
 
 ```python
 from easytransfer import base_model, layers, model_zoo, preprocessors
@@ -81,9 +93,12 @@ train_reader = CSVReader(input_glob=app.train_input_fp, is_training=True, batch_
 eval_reader = CSVReader(input_glob=app.eval_input_fp, is_training=False, batch_size=app.eval_batch_size)              
 app.run_train_and_evaluate(train_reader=train_reader, eval_reader=eval_reader)
 ```
-You can find more details or play with the code in our Jupyter/Notebook [PAI-DSW](https://dsw-dev.data.aliyun.com/#/?fileUrl=https://raw.githubusercontent.com/alibaba/EasyTransfer/master/examples/easytransfer-quick_start.ipynb&fileName=easytransfer-quick_start.ipynb). 
+您可以在Jupyter /笔记本中找到更多详细信息或使用代码  [PAI-DSW](https://dsw-dev.data.aliyun.com/#/?fileUrl=https://raw.githubusercontent.com/alibaba/EasyTransfer/master/examples/easytransfer-quick_start.ipynb&fileName=easytransfer-quick_start.ipynb). 
 
-You can also use AppZoo Command Line Tools to quickly train an App model. Take text classification on SST-2 dataset as an example. First you can download the [train.tsv](http://atp-modelzoo-sh.oss-cn-shanghai.aliyuncs.com/tutorial/glue/SST-2/train.tsv), [dev.tsv](http://atp-modelzoo-sh.oss-cn-shanghai.aliyuncs.com/tutorial/glue/SST-2/dev.tsv) and [test.tsv](http://atp-modelzoo-sh.oss-cn-shanghai.aliyuncs.com/tutorial/glue/SST-2/test.tsv), then start training: 
+您还可以使用命令行工具AppZoo快速训练App模型。 以SST-2数据集上的文本分类为例。 
+首先，您可以下载 [train.tsv](http://atp-modelzoo-sh.oss-cn-shanghai.aliyuncs.com/tutorial/glue/SST-2/train.tsv), 
+[dev.tsv](http://atp-modelzoo-sh.oss-cn-shanghai.aliyuncs.com/tutorial/glue/SST-2/dev.tsv) and 
+[test.tsv](http://atp-modelzoo-sh.oss-cn-shanghai.aliyuncs.com/tutorial/glue/SST-2/test.tsv), 然后开始训练 : 
 
 ```bash
 $ easy_transfer_app --mode train \
@@ -102,7 +117,7 @@ $ easy_transfer_app --mode train \
     --advancedParameters='pretrain_model_name_or_path=google-bert-base-en'
 ```
 
-And then predict:
+然后预测 :
 
 ```bash
 $ easy_transfer_app --mode predict \
@@ -114,7 +129,7 @@ $ easy_transfer_app --mode predict \
     --outputSchema=predictions,probabilities,logits \
     --checkpointPath=./sst2_models/ 
 ```
-To learn more about the usage of AppZoo, please refer to our [documentation](https://www.yuque.com/easytransfer/itfpm9/ky6hky).
+要了解有关AppZoo用法的更多信息，请参阅我们的  [documentation](https://www.yuque.com/easytransfer/itfpm9/ky6hky).
 
 
 
